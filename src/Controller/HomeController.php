@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Api\CatalogApi;
-use App\Api\RapidBaseApi;
-
+use App\Form\Type\LanguageType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -19,7 +19,26 @@ class HomeController extends AbstractController
         $this->catalogApi = $catalogApi;
     }
 
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'home')]
+    public function home(Request $request)
+    {
+        $languagesForm = $this->createForm(LanguageType::class);
+        $languagesForm->handleRequest($request);
+
+        if ($languagesForm->isSubmitted() && $languagesForm->isValid()) {
+            return $this->redirectToRoute('list_manufacturers', [
+                'langId' => $languagesForm->get('lngDescription')->getData()->getLngId(),
+                'countryFilterId' => $languagesForm->get('countryFilter')->getData(),
+                'typeId' => $languagesForm->get('type')->getData(),
+            ]);
+        }
+
+        return $this->render('home/index.html.twig', [
+            'languagesForm' => $languagesForm->createView(),
+        ]);
+    }
+
+    #[Route('/home', name: 'app_index_home')]
     public function index(): Response
     {
         $getLangs = $this->catalogApi->getAllLanguages();
@@ -73,5 +92,19 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'langs' => $getLangs
         ]);
+    }
+
+
+    #[Route('/list-countries-by-lang-id/{langId}', name: 'app_home_getallcountriesbylangid')]
+    public function getAllCountriesByLangId($langId)
+    {
+        try {
+            $countries = $this->catalogApi->getAllCountriesByLanguageId($langId);
+            return $this->json($countries);
+        } catch (\Exception $e) {
+            return $this->json([
+                'error' => 'An error occurred while fetching manufacturers. Please try again later.',
+            ]);
+        }
     }
 }
