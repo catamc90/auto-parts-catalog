@@ -27,7 +27,7 @@ class HomeController extends AbstractController
 
         if ($languagesForm->isSubmitted() && $languagesForm->isValid()) {
             return $this->redirectToRoute('list_manufacturers', [
-                'langId' => $languagesForm->get('lngDescription')->getData()->getLngId(),
+                'langId' => $languagesForm->get('lngDescription')->getData(),
                 'countryFilterId' => $languagesForm->get('countryFilter')->getData(),
                 'typeId' => $languagesForm->get('type')->getData(),
             ]);
