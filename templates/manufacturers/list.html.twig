@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} List Cars Manufactures | {{ parent() }} {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    {{ include('blocks/_page_header.html.twig') }}
+
+{#    {{ include('blocks/_page_sub_header.html.twig') }}#}
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label class="form-label"><strong>Search Manufacturers</strong></label>
+                <input class="form-control" type="text" id="brandInput" onkeyup="searchManufactures()" placeholder="Search.." title="Search">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchManufactures() {
+            const input = document.getElementById("brandInput");
+            const filter = input.value.toUpperCase();
+            const brandElements = document.querySelectorAll(".colman");
+
+            brandElements.forEach((element) => {
+                const cardTitle = element.querySelector(".card-title a");
+                const txtValue = cardTitle.textContent || cardTitle.innerText;
+                const shouldDisplay = txtValue.toUpperCase().indexOf(filter) > -1;
+                element.style.display = shouldDisplay ? "" : "none";
+            });
+        }
+    </script>
+
+    <div class="row" id="myUL">
+
+        {% for m in manufacturers.manufacturers %}
+            <div class="colman col-sm-2 col-md-3 col-lg-3 ">
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">
+{#                            {{ dump(m) }}#}
+                            <a href="{{ url('listModels', {'manufacturerId':  m.manufacturerId, 'langId': langId, 'countryId': countryId, 'typeId': typeId } ) }}">
+                                {{ m.brand }}
+                            </a>
+                        </h5>
+                        {#                            <div class="card-text">#}
+                        {#                                <div class="" width="60" style="background-image: url("{{ asset('/media/img.brands/'~m.MFA_ID~'.png' ) }}")" src="{{ asset('/media/img.brands/'~m.MFA_ID~'.png' ) }}">#}
+                        {#                                <div class="" width="60" style="background-image: url({{ asset('/media/img.brands/'~m.MFA_ID~'.png' ) }})" ></div>#}
+                        {#                            </div>#}
+                    </div>
+                    {#                        <div class="card-footer">#}
+                    {#                            <a target="_blank" href="{{ url('listModels', {'manufacturerId':  m.MFA_ID, 'langId': langId, 'countryFilterId': countryFilterId, 'typeId': typeId } ) }}">#}
+                    {#                                <button class="button btn">More details</button>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                </div>
+
+            </div>
+
+
+
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
