@@ -5,14 +5,14 @@ namespace App\Constants;
 class ApplicationConstants
 {
 
-    public const TYPE_1 = 1;
-    public const TYPE_2 = 2;
-    public const TYPE_3 = 3;
+    public const TYPE_AUTOMOBILE = 1;
+    public const TYPE_COMMERCIALVEHICLES = 2;
+    public const TYPE_MOTO = 3;
 
     public const VEHICLE_TYPES_MATRIX = [
-        self::TYPE_1 => 'Automobile',
-        self::TYPE_2 => 'Commercial-Vehicles',
-        self::TYPE_3 => 'Moto',
+        self::TYPE_AUTOMOBILE => 'Automobile',
+        self::TYPE_COMMERCIALVEHICLES => 'Commercial-Vehicles',
+        self::TYPE_MOTO => 'Moto',
     ];
 
 

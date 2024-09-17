@@ -93,6 +93,14 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
+    public function getManufacturerDetailsById(int $manufacturerId)
+    {
+        $this->validateId($manufacturerId, 'Manufacturer ID');
+
+        $endpoint = sprintf('manufacturers/find-by-id/%d', $manufacturerId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
     public function getModels(int $manufacturerId, int $langId, int $countryId, int $typeId)
     {
         $this->validateId($manufacturerId, 'Manufacturer ID');
