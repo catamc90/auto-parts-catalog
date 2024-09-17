@@ -30,9 +30,27 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData('languages/list');
     }
 
+    public function getLanguageDetailsById(int $langId)
+    {
+        $this->validateId($langId, 'Language ID');
+
+
+        $endpoint = sprintf('languages/get-language/lang-id/%d', $langId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
     public function getAllCountries()
     {
         return $this->rapidBaseApi->fetchData('countries/list');
+    }
+
+    public function getCountryDetailsById(int $langId, int $countryId)
+    {
+        $this->validateId($countryId, 'Country ID');
+
+
+        $endpoint = sprintf('countries/get-country/lang-id/%d/country-filter-id/%d', $langId, $countryId);
+        return $this->rapidBaseApi->fetchData($endpoint);
     }
 
     /**
@@ -43,7 +61,7 @@ class CatalogApi
     {
         $this->validateId($langId, 'Language ID');
 
-        // Build the API endpoint with string interpolation
+
         $endpoint = sprintf('countries/list-countries-by-lang-id/%d', $langId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
@@ -70,7 +88,7 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        // Build the API endpoint with string interpolation
+
         $endpoint = sprintf('manufacturers/list/lang-id/%d/country-filter-id/%d/type-id/%d', $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }

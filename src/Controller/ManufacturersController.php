@@ -20,13 +20,15 @@ class ManufacturersController extends AbstractController
     #[Route('/manufacturers/lang-id-{langId}/country-id-{countryId}/type-id-{typeId}', name: 'list_manufacturers')]
     public function list(int $langId, int $countryId, int $typeId): Response
     {
-
-
+        $language = $this->catalogApi->getLanguageDetailsById($langId);
+        $country = $this->catalogApi->getCountryDetailsById($langId, $countryId);
         $manufacturers = $this->catalogApi->getManufacturers($typeId, $langId, $countryId);
 
-        dump($manufacturers);
+
 
         return $this->render('manufacturers/list.html.twig', [
+            'language' => $language,
+            'country' => $country,
             'manufacturers' => $manufacturers,
             'langId' => $langId,
             'typeId' => $typeId,
