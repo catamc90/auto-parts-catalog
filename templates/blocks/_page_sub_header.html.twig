@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-sm-12 col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                Lang ID:{{ language.lngId }}
+                <br>
+                Lang Name:{{ language.lngDescription }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                Country ID: {{ countryId }}
+                <br>
+                Country Name: {{ country.country_name }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                Type ID: {{ typeId }}
+                <br>
+                Type: {{ constant('App\\Constants\\ApplicationConstants::VEHICLE_TYPES_MATRIX')[typeId] }}
+            </div>
+        </div>
+    </div>
+
+</div>

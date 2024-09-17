@@ -30,9 +30,27 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData('languages/list');
     }
 
+    public function getLanguageDetailsById(int $langId)
+    {
+        $this->validateId($langId, 'Language ID');
+
+
+        $endpoint = sprintf('languages/get-language/lang-id/%d', $langId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
     public function getAllCountries()
     {
         return $this->rapidBaseApi->fetchData('countries/list');
+    }
+
+    public function getCountryDetailsById(int $langId, int $countryId)
+    {
+        $this->validateId($countryId, 'Country ID');
+
+
+        $endpoint = sprintf('countries/get-country/lang-id/%d/country-filter-id/%d', $langId, $countryId);
+        return $this->rapidBaseApi->fetchData($endpoint);
     }
 
     /**
@@ -43,7 +61,7 @@ class CatalogApi
     {
         $this->validateId($langId, 'Language ID');
 
-        // Build the API endpoint with string interpolation
+
         $endpoint = sprintf('countries/list-countries-by-lang-id/%d', $langId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
@@ -70,8 +88,16 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        // Build the API endpoint with string interpolation
+
         $endpoint = sprintf('manufacturers/list/lang-id/%d/country-filter-id/%d/type-id/%d', $langId, $countryId, $typeId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
+    public function getManufacturerDetailsById(int $manufacturerId)
+    {
+        $this->validateId($manufacturerId, 'Manufacturer ID');
+
+        $endpoint = sprintf('manufacturers/find-by-id/%d', $manufacturerId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -83,6 +109,17 @@ class CatalogApi
         $this->validateId($countryId, 'Country ID');
 
         $endpoint = sprintf('models/list/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $manufacturerId, $langId, $countryId, $typeId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
+    public function getModelDetailsById(int $modelId, int $langId, int $countryId, int $typeId)
+    {
+        $this->validateId($modelId, 'Model ID');
+        $this->validateId($typeId, 'Type ID');
+        $this->validateId($langId, 'Language ID');
+        $this->validateId($countryId, 'Country ID');
+
+        $endpoint = sprintf('models/find-by/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $modelId, $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
