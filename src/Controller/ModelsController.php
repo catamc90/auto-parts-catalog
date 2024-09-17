@@ -37,7 +37,7 @@ class ModelsController extends AbstractController
         } elseif (ApplicationConstants::TYPE_MOTO == $typeId) {
             $vehicleRoutes = 'listMotorCyclesModelTypes';
         }
-        
+
 
         return $this->render('models/list.html.twig', [
             'language' => $language,
