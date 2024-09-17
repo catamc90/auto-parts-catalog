@@ -30,13 +30,6 @@ class ModelsController extends AbstractController
         $models = $this->catalogApi->getModels($manufacturerId, $langId, $countryId, $typeId);
 
 
-        if (ApplicationConstants::TYPE_AUTOMOBILE == $typeId) {
-            $vehicleRoutes = 'listPassengerCarsModelTypes';
-        } elseif (ApplicationConstants::TYPE_COMMERCIALVEHICLES == $typeId) {
-            $vehicleRoutes = 'listCommercialVehiclesModelTypes';
-        } elseif (ApplicationConstants::TYPE_MOTO == $typeId) {
-            $vehicleRoutes = 'listMotorCyclesModelTypes';
-        }
 
 
         return $this->render('models/list.html.twig', [
@@ -48,7 +41,6 @@ class ModelsController extends AbstractController
             'countryId' => $countryId,
             'manufacturerId' => $manufacturerId,
             'manufacturer' => $manufacturer,
-            'vehicleRoutes' => $vehicleRoutes,
         ]);
     }
 }

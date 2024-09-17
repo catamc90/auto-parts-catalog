@@ -112,6 +112,17 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
+    public function getModelDetailsById(int $modelId, int $langId, int $countryId, int $typeId)
+    {
+        $this->validateId($modelId, 'Model ID');
+        $this->validateId($typeId, 'Type ID');
+        $this->validateId($langId, 'Language ID');
+        $this->validateId($countryId, 'Country ID');
+
+        $endpoint = sprintf('models/find-by/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $modelId, $langId, $countryId, $typeId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
     public function getVehicleTypeDetailedInformation(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId)
     {
         $this->validateId($vehicleId, 'Vehicle ID');
