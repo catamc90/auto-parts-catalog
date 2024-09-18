@@ -62,6 +62,16 @@ class TypesController extends AbstractController
     )]
     public function vehicleTypeDetails(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId)
     {
+        $vehicleTypeDetails = $this->catalogApi->getVehicleTypeDetailedInformation($vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
+
+        dump($vehicleTypeDetails);
+
+        return $this->render('types/vehicle-details.html.twig', [
+            'vehicleTypeDetails' => $vehicleTypeDetails['vehicleTypeDetails'],
+            'langId' => $langId,
+            'typeId' => $typeId,
+            'countryId' => $countryId,
+        ]);
     }
 }

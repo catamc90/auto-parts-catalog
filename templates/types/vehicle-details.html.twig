@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ vehicleTypeDetails.brand~' - '~vehicleTypeDetails.modelType~' - '~vehicleTypeDetails.typeEngine }} | Detailed information about vehicle  | {{ parent() }} {% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+
+    {{ include('blocks/_page_header.html.twig') }}
+    <h1>{{ vehicleTypeDetails.brand~' - '~vehicleTypeDetails.modelType~' - '~vehicleTypeDetails.typeEngine }}</h1>
+    <h3>Selection of Detailed information about vehicle </h3>
+    <hr>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Vehicle Details
+            </div>
+
+
+
+        {% if typeId == constant('App\\Constants\\ApplicationConstants::TYPE_AUTOMOBILE') %}
+
+            {{ include('types/blocks/_vehicle_details_automobile.html.twig') }}
+
+        {% elseif typeId == constant('App\\Constants\\ApplicationConstants::TYPE_COMMERCIALVEHICLES') %}
+
+            {{ include('types/blocks/_vehicle_details_commercial-vehicles.html.twig') }}
+
+        {% elseif typeId == constant('App\\Constants\\ApplicationConstants::TYPE_MOTO') %}
+
+            {{ include('types/blocks/_vehicle_details_motorcycle.html.twig') }}
+
+        {% else %}
+
+            {# nothing for the moment #}
+
+        {% endif %}
+
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

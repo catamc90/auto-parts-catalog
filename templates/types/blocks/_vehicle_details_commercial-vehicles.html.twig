@@ -1,0 +1,48 @@
+<div class="card-body">
+    <dl class="row">
+        <dt class="col-sm-4">Brand</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.brand }}</dd>
+
+        <dt class="col-sm-4">Model Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.modelType }}</dd>
+
+        <dt class="col-sm-4">Type Engine Name</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.typeEngine }}</dd>
+
+        <dt class="col-sm-4">Construction Interval</dt>
+        <dd class="col-sm-8">
+            From: {{ vehicleTypeDetails.constructionIntervalStart }}<br>
+            To: {{ vehicleTypeDetails.constructionIntervalEnd }}
+        </dd>
+
+        <dt class="col-sm-4">Capacity</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.capacityTech|number_format }} CCM</dd>
+
+        <dt class="col-sm-4">Power Start (kW)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerKwStart }}</dd>
+
+        <dt class="col-sm-4">Power Up To (kW)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerKwUpto }}</dd>
+
+        <dt class="col-sm-4">Power Start (PS)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerPsStart }}</dd>
+
+        <dt class="col-sm-4">Power Up To (PS)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerPsUpto }}</dd>
+
+        <dt class="col-sm-4">Tonnage</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.tonnage }}</dd>
+
+        <dt class="col-sm-4">Body Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.bodyType }}</dd>
+
+        <dt class="col-sm-4">Engine Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.engineType }}</dd>
+
+        <dt class="col-sm-4">Axle Configuration</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.axleConfiguration }}</dd>
+
+        <dt class="col-sm-4">Engine Codes</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.engCodes }}</dd>
+    </dl>
+</div>
