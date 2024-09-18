@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ manufacturer.mfaBrand~' '~model.modelName }} Cars Model Types  | {{ parent() }}  {% endblock %}
+
+
+
+{% block body %}
+<div class="container">
+    {{ include('blocks/_page_header.html.twig') }}
+    <h1>{{ manufacturer.mfaBrand~' '~model.modelName }} | Passenger Cars Types </h1>
+    <h2>{{ selectedVehicleTypes }} Engine Types count: {{ vehicleEngineModelTypes.countModelTypes }}</h2>
+    <hr>
+
+    <div class="row">
+        <div class="card">
+            {% if typeId == constant('App\\Constants\\ApplicationConstants::TYPE_AUTOMOBILE') %}
+
+                {{ include('types/blocks/_list_automobile.html.twig') }}
+
+            {% elseif typeId == constant('App\\Constants\\ApplicationConstants::TYPE_COMMERCIALVEHICLES') %}
+
+                {{ include('types/blocks/_list_commercial-vehicles.html.twig') }}
+
+            {% elseif typeId == constant('App\\Constants\\ApplicationConstants::TYPE_MOTO') %}
+
+                {{ include('types/blocks/_list_motorcycle.html.twig') }}
+
+            {% else %}
+
+                {# nothing for the moment #}
+
+            {% endif %}
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
