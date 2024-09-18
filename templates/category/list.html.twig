@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %} Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }}  | {{ parent() }} {% endblock %}#}
+{% block title %} Category Group Products for: {{ manufacturer.mfaBrand }}  | {{ parent() }} {% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+    {{ include('blocks/_page_header.html.twig') }}
+{#    <h1> Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }} </h1>#}
+    <h1> Category Group Products for: {{ manufacturer.mfaBrand }} </h1>
+    <hr>
+
+
+    <div class="row row-cards">
+        <div class="accordion" id="accordionExample">
+            {% for nodeId, category in categories3 %}
+                <div class="accordion-item">
+
+                    <div class="space-y">
+                        <div class="card">
+                            <div class="row g-0">
+
+                                <div class="col-auto">
+                                    <div class="card-body">
+                                        <div class="avatar avatar-md" style="background-image: url()"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card-body ps-0">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <h1 class="accordion-header" id="accordion{{ nodeId }}">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ nodeId }}" aria-expanded="fasle" aria-controls="collapse{{ nodeId }}">
+                                                        {{ category.text }}
+                                                    </button>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="collapse{{ nodeId }}" class="accordion-collapse collapse " aria-labelledby="heading{{ nodeId }}" data-bs-parent="#accordionExample">
+                        <div class="accordion-body row">
+                            {% if category.children|length > 0 %}
+                                {% for nodeId, category in category.children %}
+                                    <div class="col-sm-12 col-md-3">
+                                        <h3>{{ category.text }}</h3>
+
+                                        {% if category.children|length > 0 %}
+                                            {% include 'category/_subcategoriesV2.html.twig' with {'categories': category.children} %}
+                                        {% else %}
+                                            {# btt here if no children#}
+                                            <span>List</span>
+{#                                            <a class="badge bg-green text-green-fg" href="{{ url('listArticlesByCarAndProductGroup', {'vehicleId': vehicleId, 'productGroupId': nodeId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId   }) }}">List products</a>#}
+                                            <br>
+{#                                            <a class="badge bg-green text-green-fg" href="{{ url('listOemArticlesByCarAndProductGroup', {'vehicleId': vehicleId, 'productGroupId': nodeId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId } ) }}">List OEM products</a>#}
+                                            <hr>
+                                        {% endif %}
+
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
