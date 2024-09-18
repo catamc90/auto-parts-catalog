@@ -40,7 +40,7 @@ class TypesController extends AbstractController
         }
 
         $vehicleEngineModelTypes = $this->catalogApi->getAllVehicleEngineTypes($modelId, $manufacturerId, $langId, $countryId, $typeId);
-        dump($vehicleEngineModelTypes);
+//        dump($vehicleEngineModelTypes);
 
 
         return $this->render('types/list.html.twig', [

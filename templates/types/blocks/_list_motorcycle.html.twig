@@ -1,0 +1,53 @@
+<table class="table table-vcenter card-table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>MODEL</th>
+        <th>ENGINE NAME</th>
+        <th>Capacity</th>
+        <th>Year</th>
+        <th>Power</th>
+        <th class="w-1">Details Moto </th>
+        <th class="w-1">Parts Group</th>
+    </tr>
+    </thead>
+    <tbody>
+
+{% for m in vehicleEngineModelTypes.modelTypes %}
+    <tr>
+        <td>
+            {{ m.vehicleId }}
+        </td>
+        <td>
+            {{ m.modelName }}
+        </td>
+        <td>
+            {{ m.typeEngineName }}
+        </td>
+        <td>
+            {{ m.capacityLt|number_format(2) }} L / {{ m.capacityTax }} CCM
+        </td>
+        <td>
+            <div class="text-secondary">
+                {{ m.constructionIntervalStart }}
+                <br >
+                {{ m.constructionIntervalEnd }}
+            </div>
+        </td>
+        <td>
+            {{ m.powerPs }} HP / {{ m.powerKw }} KW
+        </td>
+        <td>
+            <a target="_blank" href="{{ url('vehicleTypeDetails', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId': typeId   }) }}"><span class="badge text-bg-success">Moto Details</span></a>
+        </td>
+        <td>
+            <a href="{{ url('categoryProductsGroups', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId }) }}"><span class="badge text-bg-success">Category</span></a>
+        </td>
+    </tr>
+
+
+{% endfor %}
+
+
+</tbody>
+</table>
