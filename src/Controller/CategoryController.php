@@ -23,13 +23,13 @@ class CategoryController extends AbstractController
     public function index(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId): Response
     {
         $manufacturer = $this->catalogApi->getManufacturerDetailsById($manufacturerId);
-//        $model = $this->catalogApi->getModelDetailsById($modelId, $langId, $countryId, $typeId);
-
+        $model = $this->catalogApi->getModelDetailsByVehicleId($vehicleId, $langId, $countryId, $typeId);
 
         $categories3 = $this->catalogApi->getCategoryV3($vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
         return $this->render('category/list.html.twig', [
             'manufacturer' => $manufacturer,
+            'model' => $model,
             'manufacturerId' => $manufacturerId,
             'langId' => $langId,
             'vehicleId' => $vehicleId,

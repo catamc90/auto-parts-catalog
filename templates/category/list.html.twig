@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{#{% block title %} Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }}  | {{ parent() }} {% endblock %}#}
-{% block title %} Category Group Products for: {{ manufacturer.mfaBrand }}  | {{ parent() }} {% endblock %}
+{% block title %} Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }}  | {{ parent() }} {% endblock %}
+
 
 {% block body %}
 
@@ -9,8 +9,7 @@
 <div class="container">
 
     {{ include('blocks/_page_header.html.twig') }}
-{#    <h1> Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }} </h1>#}
-    <h1> Category Group Products for: {{ manufacturer.mfaBrand }} </h1>
+    <h1> Category Group Products for: {{ manufacturer.mfaBrand~' '~model.modelName }} </h1>
     <hr>
 
 
