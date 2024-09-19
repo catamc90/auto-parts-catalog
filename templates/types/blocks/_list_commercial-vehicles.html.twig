@@ -1,0 +1,59 @@
+
+<table class="table table-vcenter card-table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>ENGINE CODE</th>
+        <th>Body</th>
+        <th>Capacity</th>
+        <th>Year</th>
+        <th>Power</th>
+        <th class="w-1">Details Car </th>
+        <th class="w-1">Parts Group</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for m in vehicleEngineModelTypes.modelTypes %}
+        <tr>
+            <td>
+                {{ m.vehicleId }}
+            </td>
+            <td>
+                <strong>{{ m.typeEngineName }}</strong>
+            </td>
+            <td>
+                {{ m.engineCodes }}
+            </td>
+            <td>
+                {{ m.bodyType }}
+            </td>
+
+            <td>
+                {{ m.capacityTech|number_format }} CCM
+            </td>
+            <td>
+                <div class="text-secondary">
+                    {{ m.constructionIntervalStart }}
+                    <br >
+                    {{ m.constructionIntervalEnd }}
+                </div>
+            </td>
+            <td class="text-secondary">
+                {{ m.powerKwStart|number_format }} HP / {{ m.powerPsStart|number_format }} KW
+            </td>
+            <td>
+                <a target="_blank" href="{{ url('vehicleTypeDetails', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId   }) }}"><span class="badge text-bg-success">Truck Details</span></a>
+            </td>
+            <td>
+                <a href="{{ url('categoryProductsGroups', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId }) }}"><span class="badge text-bg-success">Category</span></a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+
+    </tbody>
+</table>

@@ -26,23 +26,46 @@ class TypesController extends AbstractController
         $manufacturer = $this->catalogApi->getManufacturerDetailsById($manufacturerId);
         $model = $this->catalogApi->getModelDetailsById($modelId, $langId, $countryId, $typeId);
 
+        //        $vehicleTypes = $this->catalogApi->getAllVehicleTypes();
         if (ApplicationConstants::TYPE_AUTOMOBILE == $typeId) {
-            $vehicleRoutes = 'listPassengerCarsModelTypes';
-
+            $typeTemplate = 'listPassengerCarsModelTypes';
+            $selectedVehicleTypes = 'Automobile';
         } elseif (ApplicationConstants::TYPE_COMMERCIALVEHICLES == $typeId) {
-            $vehicleRoutes = 'listCommercialVehiclesModelTypes';
-
+            $typeTemplate = 'listCommercialVehiclesModelTypes';
+            $selectedVehicleTypes = 'Commercial-Vehicles';
         } elseif (ApplicationConstants::TYPE_MOTO == $typeId) {
-            $vehicleRoutes = 'listMotorCyclesModelTypes';
-
+            $typeTemplate = 'listMotorCyclesModelTypes';
+            $selectedVehicleTypes = 'Moto';
         }
 
-        $vehicleTypes = $this->catalogApi->getAllVehicleEngineTypes($modelId, $manufacturerId, $langId, $countryId, $typeId);
+        $vehicleEngineModelTypes = $this->catalogApi->getAllVehicleEngineTypes($modelId, $manufacturerId, $langId, $countryId, $typeId);
 
+        return $this->render('types/list.html.twig', [
+            'langId' => $langId,
+            'typeId' => $typeId,
+            'countryId' => $countryId,
+            'modelId' => $modelId,
+            'manufacturerId' => $manufacturerId,
+            'manufacturer' => $manufacturer,
+            'model' => $model,
+            'vehicleEngineModelTypes' => $vehicleEngineModelTypes,
+            'selectedVehicleTypes' => $selectedVehicleTypes,
+            'typeTemplate' => $typeTemplate,
+        ]);
+    }
 
+    #[Route('/vehicle-type-details/{vehicleId}/manufacturer-id-{manufacturerId}/lang-id-{langId}/country-id-{countryId}/type-id-{typeId}',
+        name: 'vehicleTypeDetails'
+    )]
+    public function vehicleTypeDetails(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId)
+    {
+        $vehicleTypeDetails = $this->catalogApi->getVehicleTypeDetailedInformation($vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
-        return $this->render('types/index.html.twig', [
-            'controller_name' => 'TypesController',
+        return $this->render('types/vehicle-details.html.twig', [
+            'vehicleTypeDetails' => $vehicleTypeDetails['vehicleTypeDetails'],
+            'langId' => $langId,
+            'typeId' => $typeId,
+            'countryId' => $countryId,
         ]);
     }
 }

@@ -1,0 +1,47 @@
+<div class="card-body">
+    <dl class="row">
+        <dt class="col-sm-4">Brand</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.brand }}</dd>
+
+        <dt class="col-sm-4">Model Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.modelType }}</dd>
+
+        <dt class="col-sm-4">Type Engine Name</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.typeEngine }}</dd>
+
+        <dt class="col-sm-4">Construction Interval</dt>
+        <dd class="col-sm-8">
+            From: {{ vehicleTypeDetails.constructionIntervalStart }}<br>
+            To: {{ vehicleTypeDetails.constructionIntervalEnd }}
+        </dd>
+
+        <dt class="col-sm-4">Capacity</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.capacityTax|number_format }} CCM</dd>
+
+        <dt class="col-sm-4">Power Start (kW)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerKw }}</dd>
+
+
+        <dt class="col-sm-4">Power Start (PS)</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.powerPs }}</dd>
+
+
+        <dt class="col-sm-4">Number of Valves</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.numberOfValves }}</dd>
+
+        <dt class="col-sm-4">Number of Cylinders</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.numberOfCylinders }}</dd>
+
+        <dt class="col-sm-4">Fuel Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.fuelType }}</dd>
+
+        <dt class="col-sm-4">Fuel Mixture</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.fuelMixture }}</dd>
+
+        <dt class="col-sm-4">Engine Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.engineType }}</dd>
+
+        <dt class="col-sm-4">Drive Type</dt>
+        <dd class="col-sm-8">{{ vehicleTypeDetails.driveType }}</dd>
+    </dl>
+</div>

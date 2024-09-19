@@ -9,6 +9,7 @@ symfony.lock
 /public/bundles/
 /var/
 /vendor/
+/tools
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -29,4 +30,10 @@ symfony.lock
 ###> phpstorm files ###
 .idea/
 ###> phpstorm files ###
+
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
 

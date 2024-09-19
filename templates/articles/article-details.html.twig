@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %} {{ articleSpecification.article.articleProductName~' '~articleSpecification.article.supplierName~' '~articleSpecification.article.articleNo }} for {{ manufacturer.mfaBrand~' '~model.modelName }}  | {{ parent() }} {% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {{ include('blocks/_page_header.html.twig') }}
+    <h1>{{ articleSpecification.article.articleProductName~' '~articleSpecification.article.supplierName~' '~articleSpecification.article.articleNo }} for {{ manufacturer.mfaBrand~' '~model.modelName }}</h1>
+    <hr>
+
+    {{ include('articles/blocks/_article_tehnic_details.html.twig') }}
+    <hr>
+    {{ include('articles/blocks/_article_media_details.html.twig') }}
+
+
+    <hr>
+
+    {{ include('articles/blocks/_article_compatible_cars.html.twig') }}
+
+</div>
+
+
+{% endblock %}

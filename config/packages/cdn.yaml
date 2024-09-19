@@ -1,0 +1,3 @@
+parameters:
+  cdn_url: 'https://auto-car-parts.s3.us-east-1.amazonaws.com/'
+  api_url: 'api-auto-car-parts.makingdatameaningful.com'

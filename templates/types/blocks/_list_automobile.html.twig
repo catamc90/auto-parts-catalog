@@ -1,0 +1,61 @@
+<table class="table table-vcenter card-table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Engine Code</th>
+        <th class="w-1">Cylinder</th>
+        <th >Capacity</th>
+        <th>Fuel Type</th>
+        <th>Year</th>
+        <th>Power</th>
+        <th class="w-1">Details Car </th>
+        <th class="w-1">Parts Group</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for m in vehicleEngineModelTypes.modelTypes %}
+        <tr>
+            <td>
+                {{ m.vehicleId }}
+            </td>
+            <td>
+                <strong>{{ m.typeEngineName }}</strong>
+            </td>
+            <td>
+                {{ m.engineCodes }}
+            </td>
+            <td>
+                {{ m.numberOfCylinders }}
+            </td>
+            <td>
+                {{ m.capacityTech|number_format }} CCM / {{ m.capacityLt|number_format(1) }} L
+            </td>
+            <td class="text-secondary">
+                {{ m.fuelType }}
+            </td>
+            <td>
+                <div class="text-secondary">
+                    {{ m.constructionIntervalStart }}
+                    <br >
+                    {{ m.constructionIntervalEnd }}
+                </div>
+            </td>
+            <td class="text-secondary">
+                {{ m.powerKw|number_format }} KW / {{ m.powerPs|number_format }} PS
+            </td>
+            <td>
+                <a target="_blank" href="{{ url('vehicleTypeDetails', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId': typeId   }) }}"><span class="badge text-bg-success">Car Details</span></a>
+            </td>
+            <td>
+                <a href="{{ url('categoryProductsGroups', {'vehicleId':m.vehicleId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId }) }}"><span class="badge text-bg-success">Category</span></a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+
+    </tbody>
+</table>

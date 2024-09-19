@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Api\CatalogApi;
-use App\Constants\ApplicationConstants;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -28,9 +27,6 @@ class ModelsController extends AbstractController
         $country = $this->catalogApi->getCountryDetailsById($langId, $countryId);
         $manufacturer = $this->catalogApi->getManufacturerDetailsById($manufacturerId);
         $models = $this->catalogApi->getModels($manufacturerId, $langId, $countryId, $typeId);
-
-
-
 
         return $this->render('models/list.html.twig', [
             'language' => $language,
