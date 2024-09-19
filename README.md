@@ -27,14 +27,23 @@ Add your Rapid key in .env file
 step 4
 `symfony server:start`
 
+step 5
+done, enjoy!
+
 ## Controller Info Flow
 
 1.HomeController
+
 2.ManufacturersController
+
 3.ModelsController
+
 4.TypesController
+
 5.CategoryController
+
 6.ArticlesController
+
 
 
 For more information about Symfony Framework:
