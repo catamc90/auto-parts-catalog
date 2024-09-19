@@ -2,8 +2,8 @@
 
 namespace App\Api;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class RapidBaseApi
 {
@@ -25,7 +25,7 @@ class RapidBaseApi
     {
         // Make API request to RapidAPI
         try {
-            $response = $this->client->request('GET', $this->rapidApiBaseUrl . $endpoint, [
+            $response = $this->client->request('GET', $this->rapidApiBaseUrl.$endpoint, [
                 'headers' => [
                     'x-rapidapi-key' => $this->rapidApiKey,
                     'x-rapidapi-host' => parse_url($this->rapidApiBaseUrl, PHP_URL_HOST),
@@ -35,12 +35,9 @@ class RapidBaseApi
 
             // Return response content as an array or object
             return $response->toArray();
-
         } catch (\Exception $e) {
             // Handle exceptions
-            return ['error' => 'Failed to connect to API: ' . $e->getMessage()];
+            return ['error' => 'Failed to connect to API: '.$e->getMessage()];
         }
     }
-
-
 }

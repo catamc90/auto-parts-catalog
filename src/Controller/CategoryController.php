@@ -16,7 +16,6 @@ class CategoryController extends AbstractController
         $this->catalogApi = $catalogApi;
     }
 
-
     #[Route('/list-category-products-groups/vehicle-id/{vehicleId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id{typeId}',
         name: 'categoryProductsGroups'
     )]
@@ -36,7 +35,6 @@ class CategoryController extends AbstractController
             'typeId' => $typeId,
             'vehicleId' => $vehicleId,
             'categories3' => $categories3['categories'],
-
         ]);
     }
 }

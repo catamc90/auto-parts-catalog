@@ -26,8 +26,7 @@ class TypesController extends AbstractController
         $manufacturer = $this->catalogApi->getManufacturerDetailsById($manufacturerId);
         $model = $this->catalogApi->getModelDetailsById($modelId, $langId, $countryId, $typeId);
 
-
-//        $vehicleTypes = $this->catalogApi->getAllVehicleTypes();
+        //        $vehicleTypes = $this->catalogApi->getAllVehicleTypes();
         if (ApplicationConstants::TYPE_AUTOMOBILE == $typeId) {
             $typeTemplate = 'listPassengerCarsModelTypes';
             $selectedVehicleTypes = 'Automobile';
@@ -41,7 +40,6 @@ class TypesController extends AbstractController
 
         $vehicleEngineModelTypes = $this->catalogApi->getAllVehicleEngineTypes($modelId, $manufacturerId, $langId, $countryId, $typeId);
 
-
         return $this->render('types/list.html.twig', [
             'langId' => $langId,
             'typeId' => $typeId,
@@ -52,7 +50,7 @@ class TypesController extends AbstractController
             'model' => $model,
             'vehicleEngineModelTypes' => $vehicleEngineModelTypes,
             'selectedVehicleTypes' => $selectedVehicleTypes,
-            'typeTemplate' => $typeTemplate
+            'typeTemplate' => $typeTemplate,
         ]);
     }
 
@@ -62,7 +60,6 @@ class TypesController extends AbstractController
     public function vehicleTypeDetails(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId)
     {
         $vehicleTypeDetails = $this->catalogApi->getVehicleTypeDetailedInformation($vehicleId, $manufacturerId, $langId, $countryId, $typeId);
-
 
         return $this->render('types/vehicle-details.html.twig', [
             'vehicleTypeDetails' => $vehicleTypeDetails['vehicleTypeDetails'],

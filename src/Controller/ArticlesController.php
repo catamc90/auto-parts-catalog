@@ -50,18 +50,14 @@ class ArticlesController extends AbstractController
         int $manufacturerId,
         int $langId,
         int $countryId,
-        int $typeId
-    )
-    {
+        int $typeId,
+    ) {
         $manufacturer = $this->catalogApi->getManufacturerDetailsById($manufacturerId);
         $model = $this->catalogApi->getModelDetailsById($modelId, $langId, $countryId, $typeId);
-
 
         $articleSpecification = $this->catalogApi->getArticleSpecificationDetailsByArticleId($articleId, $langId, $countryId);
         $articleDetails = $this->catalogApi->getArticleCompletDetailsByArticleId($articleId, $langId, $countryId);
         $articleMedia = $this->catalogApi->getArticleAllMedia($articleId, $langId);
-
-
 
         return $this->render('articles/article-details.html.twig', [
             'manufacturer' => $manufacturer,
@@ -69,9 +65,7 @@ class ArticlesController extends AbstractController
             'articleID' => $articleId,
             'articleSpecification' => $articleSpecification,
             'articleDetails' => $articleDetails['article'],
-            'articleMedia' => $articleMedia
+            'articleMedia' => $articleMedia,
         ]);
     }
-
-
 }

@@ -3,9 +3,7 @@
 namespace App\Form\Type;
 
 use App\Api\CatalogApi;
-use App\Constants\ApplicationConstants;
 use App\Entity\Languages;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -30,21 +28,17 @@ class LanguageType extends AbstractType
 
         // Map the API response to choices (assuming 'lngDescription' is a valid field in the response)
         $languageChoices = [];
-        foreach ($languages as $language)
-        {
+        foreach ($languages as $language) {
             $languageChoices[$language['lngDescription']] = $language['lngId'];
         }
-
 
         // Fetch the vehicle types from the API
         $vehicleTypes = $this->catalogApi->getAllVehicleTypes();
 
         $vehicleTypesChoices = [];
-        foreach ($vehicleTypes as $vehicleTypes)
-        {
+        foreach ($vehicleTypes as $vehicleTypes) {
             $vehicleTypesChoices[$vehicleTypes['vehicleType']] = $vehicleTypes['id'];
         }
-
 
         $builder
             ->add('lngDescription', ChoiceType::class, [

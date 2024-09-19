@@ -4,7 +4,6 @@ namespace App\Constants;
 
 class ApplicationConstants
 {
-
     public const TYPE_AUTOMOBILE = 1;
     public const TYPE_COMMERCIALVEHICLES = 2;
     public const TYPE_MOTO = 3;
@@ -14,8 +13,4 @@ class ApplicationConstants
         self::TYPE_COMMERCIALVEHICLES => 'Commercial-Vehicles',
         self::TYPE_MOTO => 'Moto',
     ];
-
-
-
-
 }

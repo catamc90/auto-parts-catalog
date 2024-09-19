@@ -2,16 +2,12 @@
 
 namespace App\Form\Type;
 
-use App\Constants\ApplicationConstants;
 use App\Entity\Languages;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QuickSearchFormType extends AbstractType
@@ -34,13 +30,11 @@ class QuickSearchFormType extends AbstractType
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Article search nr...C 2029', 'autocomplete' => 'off'],
             ])
 
-
             ->add('search', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary'],
             ])
 
         ;
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -14,14 +14,12 @@ class CatalogApi
     /**
      * Validate that an ID is valid (greater than zero).
      *
-     * @param int $id
-     * @param string $idName
      * @throws \InvalidArgumentException
      */
     private function validateId(int $id, string $idName): void
     {
         if ($id <= 0) {
-            throw new \InvalidArgumentException(sprintf('Invalid %s provided.', $idName));
+            throw new \InvalidArgumentException(\sprintf('Invalid %s provided.', $idName));
         }
     }
 
@@ -34,8 +32,8 @@ class CatalogApi
     {
         $this->validateId($langId, 'Language ID');
 
+        $endpoint = \sprintf('languages/get-language/lang-id/%d', $langId);
 
-        $endpoint = sprintf('languages/get-language/lang-id/%d', $langId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -48,21 +46,20 @@ class CatalogApi
     {
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('countries/get-country/lang-id/%d/country-filter-id/%d', $langId, $countryId);
 
-        $endpoint = sprintf('countries/get-country/lang-id/%d/country-filter-id/%d', $langId, $countryId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
     /**
-     * @param int $langId
      * @return array
      */
     public function getAllCountriesByLanguageId(int $langId)
     {
         $this->validateId($langId, 'Language ID');
 
+        $endpoint = \sprintf('countries/list-countries-by-lang-id/%d', $langId);
 
-        $endpoint = sprintf('countries/list-countries-by-lang-id/%d', $langId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -76,20 +73,14 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData('suppliers/list');
     }
 
-    /**
-     * @param $typeId
-     * @param $langid
-     * @param $countryId
-     * @return array
-     */
     public function getManufacturers(int $typeId, int $langId, int $countryId): ?array
     {
         $this->validateId($typeId, 'Type ID');
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('manufacturers/list/lang-id/%d/country-filter-id/%d/type-id/%d', $langId, $countryId, $typeId);
 
-        $endpoint = sprintf('manufacturers/list/lang-id/%d/country-filter-id/%d/type-id/%d', $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -97,7 +88,8 @@ class CatalogApi
     {
         $this->validateId($manufacturerId, 'Manufacturer ID');
 
-        $endpoint = sprintf('manufacturers/find-by-id/%d', $manufacturerId);
+        $endpoint = \sprintf('manufacturers/find-by-id/%d', $manufacturerId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -108,7 +100,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('models/list/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $manufacturerId, $langId, $countryId, $typeId);
+        $endpoint = \sprintf('models/list/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $manufacturerId, $langId, $countryId, $typeId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -119,7 +112,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('models/find-by/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $modelId, $langId, $countryId, $typeId);
+        $endpoint = \sprintf('models/find-by/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $modelId, $langId, $countryId, $typeId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -130,7 +124,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('models/get-model-details-by-vehicle-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $langId, $countryId, $typeId);
+        $endpoint = \sprintf('models/get-model-details-by-vehicle-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $langId, $countryId, $typeId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -142,8 +137,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('types/vehicle-type-details/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
-        $endpoint = sprintf('types/vehicle-type-details/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$vehicleId, $manufacturerId, $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -155,7 +150,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('types/list-vehicles-types/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$modelId, $manufacturerId, $langId, $countryId, $typeId);
+        $endpoint = \sprintf('types/list-vehicles-types/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $modelId, $manufacturerId, $langId, $countryId, $typeId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -167,8 +163,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('category/category-products-groups-variant-1/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
-        $endpoint = sprintf('category/category-products-groups-variant-1/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$vehicleId, $manufacturerId, $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -180,8 +176,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('category/category-products-groups-variant-2/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
-        $endpoint = sprintf('category/category-products-groups-variant-2/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$vehicleId, $manufacturerId, $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -193,8 +189,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('category/category-products-groups-variant-3/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $manufacturerId, $langId, $countryId, $typeId);
 
-        $endpoint = sprintf('category/category-products-groups-variant-3/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$vehicleId, $manufacturerId, $langId, $countryId, $typeId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -207,7 +203,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('articles/list/vehicle-id/%d/product-group-id/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d',$vehicleId, $productGroupId, $manufacturerId, $langId, $countryId, $typeId);
+        $endpoint = \sprintf('articles/list/vehicle-id/%d/product-group-id/%d/manufacturer-id/%d/lang-id/%d/country-filter-id/%d/type-id/%d', $vehicleId, $productGroupId, $manufacturerId, $langId, $countryId, $typeId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -217,7 +214,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('articles/article-id-details/%d/lang-id/%d/country-filter-id/%d', $articleId, $langId, $countryId);
+        $endpoint = \sprintf('articles/article-id-details/%d/lang-id/%d/country-filter-id/%d', $articleId, $langId, $countryId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -227,8 +225,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
+        $endpoint = \sprintf('articles/details/%d/lang-id/%d/country-filter-id/%d', $articleId, $langId, $countryId);
 
-        $endpoint = sprintf('articles/details/%d/lang-id/%d/country-filter-id/%d', $articleId, $langId, $countryId);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -237,7 +235,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($countryId, 'Country ID');
 
-        $endpoint = sprintf('articles/article-number-details/lang-id/%d/country-filter-id/%d/article-no/%d', $langId, $countryId, $articleNo);
+        $endpoint = \sprintf('articles/article-number-details/lang-id/%d/country-filter-id/%d/article-no/%d', $langId, $countryId, $articleNo);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -246,7 +245,8 @@ class CatalogApi
         $this->validateId($articleId, 'Article ID');
         $this->validateId($langId, 'Language ID');
 
-        $endpoint = sprintf('articles/article-all-media-info/%d/lang-id/%d', $articleId, $langId);
+        $endpoint = \sprintf('articles/article-all-media-info/%d/lang-id/%d', $articleId, $langId);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -254,8 +254,8 @@ class CatalogApi
     {
         $this->validateId($langId, 'Language ID');
 
+        $endpoint = \sprintf('articles/search/lang-id/%d/article-search/%d', $langId, $articleNo);
 
-        $endpoint = sprintf('articles/search/lang-id/%d/article-search/%d', $langId, $articleNo);
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
@@ -264,8 +264,8 @@ class CatalogApi
         $this->validateId($langId, 'Language ID');
         $this->validateId($supplierId, 'Supplier ID');
 
-        $endpoint = sprintf('articles/search/lang-id/%d/supplier-id/%d/article-search/%d', $langId, $supplierId, $articleNo);
+        $endpoint = \sprintf('articles/search/lang-id/%d/supplier-id/%d/article-search/%d', $langId, $supplierId, $articleNo);
+
         return $this->rapidBaseApi->fetchData($endpoint);
     }
-
 }
