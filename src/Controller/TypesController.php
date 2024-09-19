@@ -17,7 +17,7 @@ class TypesController extends AbstractController
         $this->catalogApi = $catalogApi;
     }
 
-    #[Route('/list-vehicles-types/{modelId}/manufacturer-id-{manufacturerId}/lang-id-{langId}/country-id-{countryId}/type-id-{typeId}',
+    #[Route('/list-vehicles-types/model-id/{modelId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}',
         name: 'listVehicleTypes',
         requirements: ['manufacturerId' => '\d+', 'langId' => '\d+', 'countryFilterId' => '\d+', 'typeId' => '\d+']
     )]
@@ -54,7 +54,7 @@ class TypesController extends AbstractController
         ]);
     }
 
-    #[Route('/vehicle-type-details/{vehicleId}/manufacturer-id-{manufacturerId}/lang-id-{langId}/country-id-{countryId}/type-id-{typeId}',
+    #[Route('/vehicle-type-details/vehicle-id/{vehicleId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}',
         name: 'vehicleTypeDetails'
     )]
     public function vehicleTypeDetails(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId)

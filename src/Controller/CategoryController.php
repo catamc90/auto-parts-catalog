@@ -16,7 +16,7 @@ class CategoryController extends AbstractController
         $this->catalogApi = $catalogApi;
     }
 
-    #[Route('/list-category-products-groups/vehicle-id/{vehicleId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id{typeId}',
+    #[Route('/list-category-products-groups/vehicle-id/{vehicleId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}',
         name: 'categoryProductsGroups'
     )]
     public function list(int $vehicleId, int $manufacturerId, int $langId, int $countryId, int $typeId): Response

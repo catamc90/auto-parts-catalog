@@ -17,7 +17,7 @@ class ModelsController extends AbstractController
     }
 
     #[Route(
-        '/models/manufacturer-id-{manufacturerId}/lang-id-{langId}/country-id-{countryId}/type-id-{typeId}',
+        '/models/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}',
         name: 'listModels',
         requirements: ['manufacturerId' => '\d+', 'langId' => '\d+', 'countryFilterId' => '\d+', 'typeId' => '\d+']
     )]

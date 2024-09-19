@@ -16,7 +16,7 @@ class ArticlesController extends AbstractController
         $this->catalogApi = $catalogApi;
     }
 
-    #[Route('/list-articles/{vehicleId}/{productGroupId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}', name: 'listArticlesByCarAndProductGroup')]
+    #[Route('/list-articles/vehicle-id/{vehicleId}/product-group-id/{productGroupId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}', name: 'listArticlesByCarAndProductGroup')]
     public function list(
         int $vehicleId,
         int $productGroupId,
@@ -43,7 +43,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    #[Route('/article-details/{articleId}/model-id/{modelId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}', name: 'articleDetails')]
+    #[Route('/article-details/article-id/{articleId}/model-id/{modelId}/manufacturer-id/{manufacturerId}/lang-id/{langId}/country-id/{countryId}/type-id/{typeId}', name: 'articleDetails')]
     public function articleDetails(
         int $articleId,
         int $modelId,
