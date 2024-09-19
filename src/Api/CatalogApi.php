@@ -241,6 +241,15 @@ class CatalogApi
         return $this->rapidBaseApi->fetchData($endpoint);
     }
 
+    public function getArticleAllMedia(int $articleId, int $langId)
+    {
+        $this->validateId($articleId, 'Article ID');
+        $this->validateId($langId, 'Language ID');
+
+        $endpoint = sprintf('articles/article-all-media-info/%d/lang-id/%d', $articleId, $langId);
+        return $this->rapidBaseApi->fetchData($endpoint);
+    }
+
     public function searchArticlesByArticleNo(int $langId, $articleNo)
     {
         $this->validateId($langId, 'Language ID');

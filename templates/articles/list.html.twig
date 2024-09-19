@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}Hello ArticlesController!{% endblock %}#}
+{% block title %} List Articles  {{ getArticles.countArticles }} for {{ manufacturer.mfaBrand~' '~model.modelName }}  | {{ parent() }}  {% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {{ include('blocks/_page_header.html.twig') }}
+    <h1>List ( {{ getArticles.countArticles }} ) Articles  {{ oem }}  for: {{ manufacturer.mfaBrand~' '~model.modelName }}</h1>
+    <hr>
+
+    <div class="row">
+
+        {% for article in getArticles.articles %}
+            <div class="colman col-12 col-md-4 col-lg-4 mb-3" >
+                <div class="card">
+                    {% if oem == 'OEM' %}
+                        <div class="ribbon bg-blue">OEM</div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ article.articleProductName }}</strong></h5>
+                        <p class="card-text">Article ID: {{ article.articleId }}</p>
+                        <p class="card-text">
+                            Article Part No:
+                            <strong>{{ article.articleNo }}</strong>
+                        </p>
+                        <p class="card-text">Manufacturer: <strong>{{ article.supplierName }}</strong> </p>
+                        <p class="card-text">Supplier ID: {{ article.supplierId }}</p>
+                        <p class="card-text">Products ID: {{ article.productId }}</p>
+                        <hr>
+
+                        {# <div class="img-responsive img-responsive-21x9 card-img-bottom" style="background-image: url({{ url('app_api_media_getarticlemedia', {'articleId': article.articleId, 'mediatype': 'images', 'type': 'link'  } ) }})"></div>#}
+                        <div class="img-responsive img-responsive-21x9 card-img-bottom" style="background-image: url({{ cdn_url }}media_unziped/IMAGES/{{ article.supplierId }}/{{ article.articleMediaFileName }} )"></div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a class="btn btn-success" href="{{ url('articleDetails', {'articleId': article.articleId, 'modelId': modelId, 'manufacturerId': manufacturerId, 'langId': langId, 'countryId': countryId , 'typeId': typeId }  ) }}">Article Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

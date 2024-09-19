@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-6">
+        <h1>Tehnic Details</h1>
+        <ul class="list-group">
+            {% for articleSpecs in articleSpecification.articleAllSpecifications %}
+                <li class="list-group-item">
+                    <strong>{{ articleSpecs.criteriaName }}</strong>
+                    <span class="float-end">{{ articleSpecs.criteriaValue }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <h1>Tehnic Details</h1>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong> Article ID: </strong>
+                <span class="float-end">{{ articleID }}</span>
+            </li>
+            <li class="list-group-item">
+                <strong> Article Number: </strong>
+                <span class="float-end">{{ articleSpecification.article.articleNo }}</span>
+            </li>
+            <li class="list-group-item">
+                <strong> Manufacturer: </strong>
+                <span class="float-end">{{ articleSpecification.article.supplierName }}</span>
+            </li>
+
+            {% for key, ean in articleSpecification.articleEanNo %}
+                <li class="list-group-item">
+                    <strong> EAN Numbers: </strong>
+                    <span class="float-end">{{ ean }}</span>
+                </li>
+            {% endfor %}
+
+            {% for oem in articleSpecification.articleOemNo %}
+                <li class="list-group-item">
+                    <strong> OEM Numbers {{ oem.oemBrand }}: </strong>
+                    <span class="float-end">{{ oem.oemDisplayNo }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

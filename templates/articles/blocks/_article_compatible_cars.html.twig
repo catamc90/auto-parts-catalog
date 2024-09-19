@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-header">
+                <h1>Compatible Cars</h1>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap ">
+                    <thead>
+                        <tr>
+                            <th>vehicleId</th>
+                            <th>modelId</th>
+                            <th>manufacturerName</th>
+                            <th>modelName</th>
+                            <th>typeEngineName</th>
+                            <th>constructionIntervalStart</th>
+                            <th>constructionIntervalEnd</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in articleDetails.compatibleCars %}
+                            <tr>
+                                <td>{{ car.vehicleId }}</td>
+                                <td>{{ car.modelId }}</td>
+                                <td>{{ car.manufacturerName }}</td>
+                                <td>{{ car.modelName }}</td>
+                                <td>{{ car.typeEngineName }}</td>
+                                <td>{{ car.constructionIntervalStart }}</td>
+                                <td>{{ car.constructionIntervalEnd }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

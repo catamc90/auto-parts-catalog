@@ -57,8 +57,7 @@
                                             {% include 'category/_subcategoriesV2.html.twig' with {'categories': category.children} %}
                                         {% else %}
                                             {# btt here if no children#}
-                                            <span>List</span>
-{#                                            <a class="badge bg-green text-green-fg" href="{{ url('listArticlesByCarAndProductGroup', {'vehicleId': vehicleId, 'productGroupId': nodeId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId   }) }}">List products</a>#}
+                                            <a class="badge bg-green text-green-fg" href="{{ url('listArticlesByCarAndProductGroup', {'vehicleId': vehicleId, 'productGroupId': nodeId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId   }) }}">List products</a>
                                             <br>
 {#                                            <a class="badge bg-green text-green-fg" href="{{ url('listOemArticlesByCarAndProductGroup', {'vehicleId': vehicleId, 'productGroupId': nodeId, 'manufacturerId':manufacturerId, 'langId':langId, 'countryId':countryId, 'typeId':typeId } ) }}">List OEM products</a>#}
                                             <hr>
