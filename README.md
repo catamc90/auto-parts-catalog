@@ -33,11 +33,17 @@ done, enjoy!
 ## Controller Info Flow
 
 1.HomeController
+
 2.ManufacturersController
+
 3.ModelsController
+
 4.TypesController
+
 5.CategoryController
+
 6.ArticlesController
+
 
 
 For more information about Symfony Framework:
