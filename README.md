@@ -27,6 +27,9 @@ Add your Rapid key in .env file
 step 4
 `symfony server:start`
 
+step 5
+done, enjoy!
+
 ## Controller Info Flow
 
 1.HomeController
