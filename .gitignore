@@ -9,6 +9,7 @@ symfony.lock
 /public/bundles/
 /var/
 /vendor/
+/tools
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -35,3 +36,4 @@ symfony.lock
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
+
