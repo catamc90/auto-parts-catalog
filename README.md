@@ -1,8 +1,8 @@
 # Auto Parts Catalog - TecDoc Alternative
 
-This project, built on **Symfony 7.1**, provides a foundation to help you integrate with our **[Auto Parts Catalog API](https://rapidapi.com/makingdatameaningful/api/auto-parts-catalog)**. The API enables precise automotive parts identification, cross-referencing, and vehicle application data. Start building your app today using the available API functionalities.
+This project, built on **Symfony 7.1**, provides a foundation to help you integrate with our **[Auto Parts Catalog API]([https://auto-parts-catalog.apiprofile.com/](https://auto-parts-catalog.apiprofile.com/))**. The API enables precise automotive parts identification, cross-referencing, and vehicle application data. Start building your app today using the available API functionalities.
 
-**API Documentation**: [Auto Parts Catalog](https://rapidapi.com/makingdatameaningful/api/auto-parts-catalog)
+**API Documentation**: [Auto Parts Catalog]([https://auto-parts-catalog.apiprofile.com/](https://auto-parts-catalog.apiprofile.com/))
 
 ## Key Features
 - **Part Identification**: Search parts by vehicle make, model, and year.
@@ -27,7 +27,7 @@ composer install
 ```
 
 ### Step 3: Add API Key
-Update the `.env` file with your [RapidAPI key](https://rapidapi.com/makingdatameaningful/api/auto-parts-catalog):
+Update the `.env` file with your [RapidAPI key]([https://auto-parts-catalog.apiprofile.com/](https://auto-parts-catalog.apiprofile.com/)):
 ```
 RAPIDAPI_KEY=your_rapidapi_key_here
 ```
@@ -53,7 +53,7 @@ The API methods are available in the `CatalogApi.php` class. Controllers handle 
 
 ## Demo
 
-Check out the live demo here: [Auto Parts Catalog Demo](http://auto-parts-catalog.makingdatameaningful.com/)
+Check out the live demo here: [Auto Parts Catalog Demo](https://auto-parts-catalog.apiprofile.com/)
 
 ## Additional Resources
 
