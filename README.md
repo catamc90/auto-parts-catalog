@@ -1,6 +1,6 @@
 # Auto Parts Catalog - TecDoc Alternative
 
-This project, built on **Symfony 7.1**, provides a foundation to help you integrate with our **[Auto Parts Catalog API]([https://auto-parts-catalog.apiprofile.com/](https://auto-parts-catalog.apiprofile.com/))**. The API enables precise automotive parts identification, cross-referencing, and vehicle application data. Start building your app today using the available API functionalities.
+This project, built on **Symfony 7.1**, provides a foundation to help you integrate with our **[Auto Parts Catalog API](https://auto-parts-catalog.apiprofile.com/)**. The API enables precise automotive parts identification, cross-referencing, and vehicle application data. Start building your app today using the available API functionalities.
 
 **API Documentation**: [Auto Parts Catalog]([https://auto-parts-catalog.apiprofile.com/](https://auto-parts-catalog.apiprofile.com/))
 
